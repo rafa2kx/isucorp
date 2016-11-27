@@ -1,0 +1,4 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeEditing/Localization/MoveToResource/LastResourceFile/@EntryValue">9CD51730-E830-48E3-A24E-46BBEB324077/d:Properties/f:Resources.resx</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=PAGE/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PAGE/@EntryIndexedValue">Page</s:String></wpf:ResourceDictionary>

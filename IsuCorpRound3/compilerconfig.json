@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Scripts/tinymce.es5.js",
+    "inputFile": "Scripts/tinymce.js"
+  },
+  {
+    "outputFile": "Scripts/create_reservation.es5.js",
+    "inputFile": "Scripts/create_reservation.js"
+  }
+]

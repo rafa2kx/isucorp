@@ -1,0 +1,64 @@
+﻿@model IsuCorpRound3.Models.ViewModel.ReservationViewModel
+
+@section viewHeader{
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+            <h4 class="title">@Resources.CREATE_RESERVATION_TITLE</h4>
+        </div>
+        <div class="col-lg-5 col-md-4 col-xs-12 ">
+            <p class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 hidden-xs pull-right">
+            @Html.ActionLink(@Resources.RESERVATION_LIST, "Index", null, new {@class = "btn btn-default action-btn" })
+        </div>
+    </div>
+}
+<form action="/Page/Create" method="post" novalidate="novalidate" role="form">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="row">
+
+            <div class="col-md-3">
+                
+                @Html.EditorFor(model => model.Fullname, new {htmlAttributes = new {@class = "form-control fullname-input", @placeholder = @Resources.FULLNAME ,@type="text", @data_bind = "value: Fullname", @required="required"}})
+            </div>
+
+            <div class="col-md-3">
+                @Html.DropDownListFor(model => model.ContactTypeId, (IEnumerable<SelectListItem>) ViewBag.ContactTypes, new {@class = "form-control contact-input", @placeholder = @Resources.CONTACT_TYPE, @data_bind = "value: ContactTypeId"})
+            </div>
+
+
+            <div class="col-md-3">
+                @Html.EditorFor(model => model.PhoneNumber, new {htmlAttributes = new {@class = "form-control phone-input", @placeholder = @Resources.PHONE_NUMBER, @data_bind = "value: PhoneNumber"}})
+            </div>
+
+
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.Birthdate, new {htmlAttributes = new {@class = "form-control birthdate-input", @placeholder = @Resources.BIRTHDATE, @type = "text", @format = "dd/mm/yyyy", @data_bind = "value: Birthdate",@required = "required" } })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <div class="col-lg-11 col-md-11 col-xs-11">
+                @Html.HiddenFor(model => model.Description, new {  @data_bind = "value: Description" } )
+
+            </div>
+        </div>
+
+        <div class="form-group form-group-offset">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 pull-right col-md-pull-1">
+                <input id="Submit" type="submit" value="@Resources.SAVE" class="btn btn-default btn-block redbtn" data-bind="click: btnCreateArticle" disabled="disabled"/>
+            </div>
+        </div>
+    </div>
+</form>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/create")
+    
+
+}

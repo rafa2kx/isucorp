@@ -1,0 +1,85 @@
+﻿@model IEnumerable<IsuCorpRound3.Models.ViewModel.ReservationViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+@section viewHeader{
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+            <h4 class="title">@Resources.RESERVATION_LIST</h4>
+        </div>
+        <div class="col-lg-5 col-md-4 col-xs-12 ">
+            <p class="lorem"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. </p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 hidden-xs pull-right">
+            @Html.ActionLink(@Resources.CREATE_RESERVATION, "Create", null, new {@class = "btn btn-default action-btn"})
+        </div>
+    </div>
+}
+
+<div class="body-content-list">
+    <div class="row clearfix">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 order ">
+            <select id="orderType" place-holder="Order By" class="form-control">
+                <option value="BirthDate ASC">@Resources.BY_DATE_ASC</option>
+                <option value="BirthDate DESC">@Resources.BY_DATE_DESC</option>
+                <option value="Fullname ASC">@Resources.BY_ALPHABETIC_ASC</option>
+                <option value="Fullname DESC" selected>@Resources.BY_ALPHABETIC_DESC</option>
+                <option value="Rating ">@Resources.BY_RATING</option>
+            </select>
+        </div>
+    </div>
+    <div data-bind="foreach: Reservations">
+        <div class="row clearfix row-style reservation-item" data-bind="attr:{id: Id}">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 contact">
+                <div class="pull-left">
+                    <img class="img-responsive"/>
+                </div>
+                <div class="pull-left">
+                    <span class="item-caption" data-bind="text: Fullname"></span><br/>
+                    <span class="text-muted" data-bind="text: Birthdate"></span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+                <span class="item-caption">@Resources.RANKING</span>
+                <br/>
+                <div class="stars-default" data-bind="value: Rating">
+                    <input type="hidden" name="rating" data-bind="value: Rating"/>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-2 favorite" data-bind="value: IsFavorite">
+                <div class="pull-right heart heart-gray"></div>
+                <div class="pull-right">
+                    <span class="text-muted hidden-sm hidden-xs tf">@Resources.ADD_TO_FAVORITES</span>&nbsp;
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 buttons">
+                @*@Html.ActionLink("@Resources.DELETE_BOTTON", "Delete", new {id = item.Id}, new {@class = "btn btn-default mybtn hidden-sm hidden-xs"})*@
+                <a class="btn btn-default action-btn edit">@Resources.EDIT</a>
+            </div>
+        </div>
+        @* } *@
+    </div>
+
+    <ul class="pagination">
+        @Html.Hidden("pageNumber", 1)
+
+        <li class="first disabled">
+            <a>&laquo;</a>
+        </li>
+        @for (var i = 1; i <= ViewBag.pages; i++)
+        {
+            var active = i == 1 ? "page active" : "page";
+            <li id="page_@i" class="@active">
+                <a>@i</a>
+            </li>
+        }
+        <li class="last">
+            <a>&raquo; </a>
+        </li>
+    </ul>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/index")
+
+}
