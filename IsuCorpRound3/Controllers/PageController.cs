@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
-using IsuCorpRound3.Models.EntityManager;
+using IsucorpDataAccess.Models.EntityManager;
 
 namespace IsuCorpRound3.Controllers
 {

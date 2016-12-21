@@ -46,6 +46,10 @@ function successMessage() {
     $('<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Well done! Your reservation was submitted.</div>').insertAfter("#header");
 }
 
+function errorMessage(message) {
+    $('<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'+ message +'</div>').insertAfter("#header");
+}
+
 function validateForm() {
     valid = true;
     if ($("#Birthdate").val() === "") {

@@ -1,8 +1,8 @@
 using System.Data.Entity.Migrations;
-using IsuCorpRound3.Models.DB;
+using IsucorpDataAccess.Models.DB;
 using IsuCorpRound3.Models.Entities;
 
-namespace IsuCorpRound3.Migrations
+namespace IsucorpDataAccess.Migrations
 {
     internal sealed class Configuration : DbMigrationsConfiguration<IsucorpContext>
     {

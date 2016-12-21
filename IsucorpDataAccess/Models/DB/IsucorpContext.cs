@@ -1,9 +1,9 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
-using IsuCorpRound3.Migrations;
+using IsucorpDataAccess.Migrations;
 using IsuCorpRound3.Models.Entities;
 
-namespace IsuCorpRound3.Models.DB
+namespace IsucorpDataAccess.Models.DB
 {
     public class IsucorpContext : DbContext
     {

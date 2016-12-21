@@ -1,16 +1,15 @@
 ﻿$(document).ready(function() {
-    var validForm = false;
-    var urlPath = window.location.pathname;
+
     var createVm = {
         Fullname: ko.observable(),
         PhoneNumber: ko.observable(),
         Description: ko.observable($("#Description")[0].value),
         Birthdate: ko.observable(),
         ContactTypeId: ko.observable(),
-        ValidForm: ko.computed(function () {
+        ValidForm: ko.computed(function() {
             return $("#Fullname").val() === "";
         }, this),
-        btnCreateArticle: function (event) {
+        btnCreateArticle: function(event) {
             var data = ko.toJSON(this);
             validateForm(event);
             $.ajax({
@@ -23,20 +22,14 @@
                     successMessage();
                 },
                 error: function(err) {
-                    if (err.responseText == "success") {
-                        window.location.href = urlPath + "/";
-                    } else {
-                        alert(err.responseText);
-                    }
-                },
-                complete: function() {
+                    errorMessage(err.statusText + ": " + err.responseText);
                 }
             });
 
         }
     };
     ko.applyBindings(createVm);
-  
+
 });
 
 

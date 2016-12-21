@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
-using System.Web.Http.Controllers;
 using System.Web.Http.Results;
-using IsuCorpRound3.Models.EntityManager;
-using IsuCorpRound3.Models.ViewModel;
+using IsucorpDataAccess.Models.EntityManager;
+using IsucorpDataAccess.Models.ViewModel;
 using Newtonsoft.Json;
 
 namespace IsuCorpRound3.Controllers
@@ -27,14 +27,9 @@ namespace IsuCorpRound3.Controllers
 
         protected override JsonResult<T> Json<T>(T content, JsonSerializerSettings serializerSettings, Encoding encoding)
         {
-            
             serializerSettings.DateFormatString = "MM/dd/yyyy";
-            serializerSettings.DateParseHandling = DateParseHandling.DateTime;
-            
             return base.Json(content, serializerSettings, encoding);
         }
-
-        
 
 
         /// <summary>
@@ -68,17 +63,23 @@ namespace IsuCorpRound3.Controllers
         {
             try
             {
-                if (ModelState.IsValid && value.Birthdate.Value.CompareTo(DateTime.Today) < 0)
+                if (value.Birthdate != null && value.Birthdate.Value.CompareTo(DateTime.Today) > 0)
+                {
+                    ModelState.AddModelError("Bad Date", "The specified date must be in past");
+                }
+                if (ModelState.IsValid)
                 {
                     _reservationRepository.InsertReservation(value);
-                    return new HttpResponseMessage(HttpStatusCode.OK);
+                    return Request.CreateResponse( HttpStatusCode.OK, new {Success = "true"});
                 }
             }
-            catch
+            catch (Exception e)
             {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return Request.CreateResponse( HttpStatusCode.InternalServerError, e.Message);
             }
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            var errors = (from state in ModelState from error in state.Value.Errors select error.ErrorMessage).ToList();
+
+            return Request.CreateResponse( HttpStatusCode.BadRequest, errors.ToArray());
         }
 
         /// <summary>
@@ -90,11 +91,11 @@ namespace IsuCorpRound3.Controllers
             try
             {
                 _reservationRepository.UpdateReservation(value);
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                return Request.CreateResponse( HttpStatusCode.OK, new { Success = "true" });
             }
-            catch
+            catch(Exception e)
             {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return Request.CreateResponse( HttpStatusCode.InternalServerError, e.Message);
             }
         }
 
@@ -107,11 +108,11 @@ namespace IsuCorpRound3.Controllers
             try
             {
                 _reservationRepository.RemoveReservation(id);
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                return Request.CreateResponse( HttpStatusCode.OK, new { Success = "true" });
             }
-            catch
+            catch(Exception e)
             {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return Request.CreateResponse( HttpStatusCode.InternalServerError, e.Message);
             }
         }
     }

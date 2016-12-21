@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IsuCorpRound3.Models.DB;
+using IsucorpDataAccess.Models.DB;
+using IsucorpDataAccess.Models.ViewModel;
 using IsuCorpRound3.Models.Entities;
 using IsuCorpRound3.Models.ViewModel;
 
-namespace IsuCorpRound3.Models.EntityManager
+namespace IsucorpDataAccess.Models.EntityManager
 {
     public enum ReservationOrderableFields
     {

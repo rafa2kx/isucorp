@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using IsucorpDataAccess.Models.ViewModel;
 using IsuCorpRound3.Models.ViewModel;
 
-namespace IsuCorpRound3.Models.EntityManager
+namespace IsucorpDataAccess.Models.EntityManager
 {
-    internal interface IReservationRepository
+    public interface IReservationRepository
     {
         IEnumerable<ContactTypeModel> GetContacTypes();
         ReservationModel GetReservation(int id);
