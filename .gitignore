@@ -9,4 +9,10 @@
 /packages
 /IsuCorpRound3/obj/
 /IsuCorpRound3/spec/
-/IsuCorpRound3/bin/
+/IsuCorpRound3/bin 
+.idea/
+.vs/
+IsuCorpRound3.rar
+IsuCorpRound3/App_Data/
+IsucorpDataAccess/bin/
+IsucorpDataAccess/obj/
