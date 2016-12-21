@@ -1,13 +1,20 @@
-﻿$(document).ready(function() {
-
-   $("#Birthdate").datepicker({ format: "dd/mm/yyyy" });
-   var s = $("#Birthdate");
-   $("#Birthdate").change(validateForm);
-   $("#Fullname").keyup(validateForm);
+﻿$(document).ready(function () {
+    lang = "en";
+    cookies = document.cookie.split("=");
+    if (cookies[0] === "languageCookie")
+        lang = cookies[1];
+    $("#Birthdate").datepicker({
+        format: "mm/dd/yyyy",
+        language: lang
+    });
+    
+    var s = $("#Birthdate");
+    $("#Birthdate").change(validateForm);
+    $("#Fullname").keyup(validateForm);
 
     $("#Description").Editor();
-    $('#Description').Editor('setText', $('#Description').val());
-   $(".Editor-container").mouseleave(function () {
+    $("#Description").Editor("setText", $("#Description").val());
+    $(".Editor-container").mouseleave(function() {
         var v = $(".Editor-editor").html();
         $("#Description").val(v);
         $("#Description").change();

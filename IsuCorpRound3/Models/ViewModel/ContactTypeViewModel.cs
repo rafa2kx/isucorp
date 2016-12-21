@@ -2,7 +2,7 @@
 
 namespace IsuCorpRound3.Models.ViewModel
 {
-    public class ContactTypeViewModel
+    public class ContactTypeModel
     {
         [Key]
         public int Id { get; set; }

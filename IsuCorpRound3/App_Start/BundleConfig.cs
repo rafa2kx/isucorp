@@ -25,6 +25,7 @@ namespace IsuCorpRound3
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/bootstrap-datepicker.min.js",
+                "~/Scripts/locales.js",
                 "~/Scripts/editor.js"));
             bundles.Add(new ScriptBundle("~/bundles/create").Include(
                 "~/Scripts/create.js",

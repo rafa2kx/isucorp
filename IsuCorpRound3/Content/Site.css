@@ -180,6 +180,15 @@ select.form-control { border-radius: 0px !important; }
     margin-top: 20px;
 }
 
+.lang {
+    position: absolute;
+    right: 1%;
+    
+}
+.lang a {
+    color: white;
+}
+
 
 @media (min-width: 1200px) {
     .container { max-width: 970px; }

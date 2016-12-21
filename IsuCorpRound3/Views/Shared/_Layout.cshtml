@@ -10,14 +10,14 @@
 </head>
 <body>
 <div id="header" class="navbar navbar-inverse navbar-nav">
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav hidden-sm hidden-xs pull-right">
-            <li>
-                @{ var lang = ViewBag.culture.Equals("en") ? "es" : "en"; }
-                <a href="/Page/SetLanguage?language=@lang">@Resources.LANGUAGE: <strong>@ViewBag.culture.ToUpper()</strong></a>
-            </li>
-        </ul>
+
+    <div class="hidden-xs pull-right lang">
+        
+            @{ var lang = ViewBag.culture.Equals("en") ? "es" : "en"; }
+            <a href="/Page/SetLanguage?language=@lang">@Resources.LANGUAGE: <strong>@ViewBag.culture.ToUpper()</strong></a>
+        
     </div>
+
     <img src="../../Content/images/banner.png" width="100%"/>
     <div class="page-header">
         <div class="container">

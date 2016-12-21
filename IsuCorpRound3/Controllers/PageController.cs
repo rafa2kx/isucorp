@@ -11,7 +11,7 @@ namespace IsuCorpRound3.Controllers
     {
         /// <summary>
         /// </summary>
-        private readonly ReservationRepository _reservationRepository;
+        private readonly IReservationRepository _reservationRepository;
 
         /// <summary>
         /// </summary>

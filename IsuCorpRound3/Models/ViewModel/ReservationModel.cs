@@ -5,7 +5,7 @@ using IsuCorpRound3.Properties;
 
 namespace IsuCorpRound3.Models.ViewModel
 {
-    public class ReservationViewModel
+    public class ReservationModel
     {
         [Key]
         public int Id { get; set; }
@@ -13,6 +13,7 @@ namespace IsuCorpRound3.Models.ViewModel
         [Required(ErrorMessage = "*")]
         [Display(ResourceType = typeof (Resources), Name = "FULLNAME")]
         public string Fullname { get; set; }
+        
 
         [Required(ErrorMessage = "*")]
         [Display(ResourceType = typeof (Resources), Name = "BIRTHDATE")]

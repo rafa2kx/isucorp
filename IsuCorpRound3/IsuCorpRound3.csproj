@@ -177,40 +177,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
-    <Compile Include="Models\DB\ContactType.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\InsertContactType1_Result.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\InsertContactType2_Result.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\Reservation.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DB\ContextFactory.cs" />
+    <Compile Include="Models\DB\IsucorpContext.cs" />
+    <Compile Include="Models\Entities\ContactType.cs" />
+    <Compile Include="Models\Entities\Reservation.cs" />
+    <Compile Include="Models\EntityManager\IReservationRepository.cs" />
     <Compile Include="Models\EntityManager\ReservationRepository.cs" />
-    <Compile Include="Models\DB\Test3EntityModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test3EntityModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\Test3EntityModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test3EntityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\Test3EntityModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Test3EntityModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,22 +198,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\IsuCorpRound3.Models.DB.IsucorpContext.mdf" />
     <Content Include="Content\bootstrap-datepicker3.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css-stars.css" />
     <Content Include="Content\editor.css" />
-    <Content Include="Models\DB\Test3EntityModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test3EntityModel.edmx</DependentUpon>
-      <LastGenOutput>Test3EntityModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DB\Test3EntityModel.edmx.sql" />
-    <Content Include="Models\DB\Test3EntityModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Test3EntityModel.edmx</DependentUpon>
-      <LastGenOutput>Test3EntityModel.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,13 +214,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\DB\Test3EntityModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Test3EntityModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DB\Test3EntityModel.edmx.diagram">
-      <DependentUpon>Test3EntityModel.edmx</DependentUpon>
-    </Content>
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -267,6 +223,7 @@
     <Content Include="Scripts\create.js" />
     <Content Include="Scripts\editor.js" />
     <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\locales.js" />
     <Content Include="Scripts\rating.js" />
     <Content Include="Scripts\ViewModel\EditVM.js" />
     <Content Include="Scripts\ViewModel\CreateVM.js" />
@@ -302,7 +259,6 @@
     <Content Include="Views\Page\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\font-awesome\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\images\" />
